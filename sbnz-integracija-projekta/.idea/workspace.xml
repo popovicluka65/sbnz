@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f86c9509-3835-4934-b06f-b66bd202158f" name="Changes" comment="" />
+    <list default="true" id="f86c9509-3835-4934-b06f-b66bd202158f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/kjar/src/main/resources/rules/forward/forward.drl" beforeDir="false" afterPath="$PROJECT_DIR$/kjar/src/main/resources/rules/forward/forward.drl" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -19,7 +24,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/NITRO/Desktop/Kostur/IME_PREZIME_BROJINDEKSA_GRUPA/sbnz-integracija-projekta",
+    "last_opened_file_path": "C:/Users/NITRO/Desktop/git/sbnz/sbnz-integracija-projekta/model",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -32,6 +37,7 @@
       <option name="presentableId" value="Default" />
       <updated>1757673624565</updated>
       <workItem from="1757673625573" duration="32000" />
+      <workItem from="1757973770268" duration="42000" />
     </task>
     <servers />
   </component>

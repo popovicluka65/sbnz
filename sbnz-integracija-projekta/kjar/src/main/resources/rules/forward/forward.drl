@@ -1,1 +1,45 @@
-package forward;
+package forward
+
+import com.ftn.sbnz.model.Engine;
+import com.ftn.sbnz.model.enums.State;
+
+
+rule "Temperature too high"
+    when
+        $e : Engine( temperature > 95, state == State.NORMAL )
+    then
+        modify($e) { setState(State.CHECK_COOLANT) };
+        System.out.println("Temperature above safe limit -> CHECK COOLANT LEVEL");
+end
+
+rule "Coolant leak"
+    when
+        $e : Engine( coolantLevel < 40, state == State.CHECK_COOLANT )
+    then
+        modify($e) { setState(State.COOLANT_LEAK) };
+        System.out.println("Coolant level too low -> COOLANT LEAK");
+end
+
+rule "Cooling system failure"
+    when
+        $e : Engine( fanActive == false, state == State.COOLANT_LEAK )
+    then
+        modify($e) { setState(State.COOLING_FAILURE) };
+        System.out.println("Cooling fan not active -> COOLING SYSTEM FAILURE");
+end
+
+rule "Head gasket failure"
+    when
+        $e : Engine( pressureDrop == true, state == State.COOLING_FAILURE )
+    then
+        modify($e) { setState(State.HEAD_GASKET_FAILURE) };
+        System.out.println("Pressure drop detected -> HEAD GASKET FAILURE");
+end
+
+rule "Engine shutdown"
+    when
+        $e : Engine( state == State.HEAD_GASKET_FAILURE )
+    then
+        modify($e) { setState(State.SHUTDOWN) };
+        System.out.println("Final action -> ENGINE SHUTDOWN");
+end
