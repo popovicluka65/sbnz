@@ -34,8 +34,10 @@ public class Application implements CommandLineRunner {
 	{
 	
 		// pokretati odvojeno svaku main klasu
+		System.out.println("ENGINE PRAVILO");
 		EngineTest.main();
-		
+		System.out.println("\n\n\n\n\n\nBRAKE SYSTEM PRAVILO");
+		BrakeSystemTest.main();
 		//GlobalExample.main();
 		
 		//ModifyExample.main();

@@ -1,0 +1,44 @@
+package forward
+
+import com.ftn.sbnz.model.Brake;
+import com.ftn.sbnz.model.enums.BrakeState;
+
+rule "Check brake pads"
+    when
+        $b : Brake( pedalPressure > 50, padWear > 20, state == BrakeState.NORMAL )
+    then
+        modify($b) { setState(BrakeState.CHECK_BRAKE_PADS) };
+        System.out.println("High pedal pressure & worn pads -> CHECK BRAKE PADS");
+end
+
+rule "Extended braking distance"
+    when
+        $b : Brake( padWear > 50, state == BrakeState.CHECK_BRAKE_PADS )
+    then
+        modify($b) { setState(BrakeState.EXTENDED_BRAKING_DISTANCE) };
+        System.out.println("Pads very worn -> EXTENDED BRAKING DISTANCE");
+end
+
+rule "Brake fluid leak"
+    when
+        $b : Brake( brakeFluid < 20, state == BrakeState.EXTENDED_BRAKING_DISTANCE )
+    then
+        modify($b) { setState(BrakeState.BRAKE_FLUID_LEAK) };
+        System.out.println("Brake fluid low -> BRAKE FLUID LEAK");
+end
+
+rule "Main cylinder failure"
+    when
+        $b : Brake( pedalPressure < 30, state == BrakeState.BRAKE_FLUID_LEAK )
+    then
+        modify($b) { setState(BrakeState.MAIN_CYLINDER_FAILURE) };
+        System.out.println("Pedal pressure drop -> MAIN CYLINDER FAILURE");
+end
+
+rule "Immediate service required"
+    when
+        $b : Brake( state == BrakeState.MAIN_CYLINDER_FAILURE )
+    then
+        modify($b) { setState(BrakeState.IMMEDIATE_SERVICE_REQUIRED) };
+        System.out.println("Final action -> IMMEDIATE SERVICE REQUIRED");
+end

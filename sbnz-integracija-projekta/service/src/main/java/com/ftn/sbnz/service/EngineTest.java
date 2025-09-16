@@ -13,7 +13,7 @@ public class EngineTest {
 
     public static void main() {
         try {
-            System.out.println("UDJE OVDE");
+            //System.out.println("UDJE OVDE");
             // Kreiraj KieContainer i KieSession
             KieContainer kc = KnowledgeSessionHelper.createRuleBase();
             KieSession kSession = KnowledgeSessionHelper.getStatefulKnowledgeSession(kc, "engineKsession");
